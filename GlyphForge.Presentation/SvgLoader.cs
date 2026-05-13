@@ -8,7 +8,7 @@ namespace GlyphForge.Presentation
 {
     public static class SvgLoader
     {
-        public static List<SvgIcon> LoadFromFolder(string folderPath)
+        public static List<SvgIcon> LoadFromFolder(string folderPath, string prefix)
         {
             List<SvgIcon> icons = new();
 
@@ -55,7 +55,7 @@ namespace GlyphForge.Presentation
 
                 icons.Add(new SvgIcon
                 {
-                    Name = ToPascalCase(Path.GetFileNameWithoutExtension(file)),
+                    Name = prefix + ToPascalCase(Path.GetFileNameWithoutExtension(file)),
                     Geometry = Geometry.Parse(Simplify(geometry.ToString()))
                 });
             }

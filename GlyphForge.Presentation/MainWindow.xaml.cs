@@ -35,7 +35,7 @@ namespace GlyphForge.Presentation
 
         private void CreateDictionaryButton_Click(object sender, RoutedEventArgs e)
         {
-            _createdIcons = SvgLoader.LoadFromFolder(_selectedFolder);
+            _createdIcons = SvgLoader.LoadFromFolder(_selectedFolder, _prefix_TextBox.Text);
 
             PresentIcons();
 

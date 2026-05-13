@@ -149,7 +149,8 @@
                        Grid.Row="1"
                        Grid.ColumnSpan="2"/>
 
-            <TextBox Grid.Row="2"
+            <TextBox xaml:Name="_prefix_TextBox"
+                     Grid.Row="2"
                      Grid.ColumnSpan="2"/>
 
             <TextBlock Text="Select folder with .svg icons"
@@ -231,12 +232,14 @@
 
             <Button Content="Export in file"
                     Grid.Row="6"
-                    Margin="0, 0, 5, 0" Click="ExportButton_Click"/>
+                    Margin="0, 0, 5, 0"
+                    Click="ExportButton_Click"/>
 
             <Button Content="Copy to clipboard"
                     Grid.Row="6"
                     Grid.Column="1"
-                    Margin="5, 0, 0 ,0" Click="CopyButton_Click"/>
+                    Margin="5, 0, 0 ,0"
+                    Click="CopyButton_Click"/>
 
         </Grid>
         
