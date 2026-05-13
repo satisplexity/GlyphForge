@@ -17,6 +17,8 @@ namespace GlyphForge.Presentation
 
         private List<SvgIcon> _createdIcons;
 
+        private string _buildedString;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,6 +43,8 @@ namespace GlyphForge.Presentation
             _createdIcons = SvgLoader.LoadFromFolder(_selectedFolder);
 
             PresentIcons();
+
+            _buildedString = ResourceDictionaryGenerator.Generate(_createdIcons);
         }
 
         private void ExportButton_Click(object sender, RoutedEventArgs e)
@@ -50,7 +54,10 @@ namespace GlyphForge.Presentation
 
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Clipboard.Clear();
+            Clipboard.SetText(_buildedString);
+            
+            MessageBox.Show("Copied to clipboard!");
         }
 
         private void PresentIcons()

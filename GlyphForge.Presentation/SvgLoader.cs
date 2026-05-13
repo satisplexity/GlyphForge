@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Media;
 using System.Xml.Linq;
 
@@ -53,12 +55,28 @@ namespace GlyphForge.Presentation
 
                 icons.Add(new SvgIcon
                 {
-                    Name = Path.GetFileNameWithoutExtension(file),
-                    Geometry = geometry
+                    Name = ToPascalCase(Path.GetFileNameWithoutExtension(file)),
+                    Geometry = Geometry.Parse(Simplify(geometry.ToString()))
                 });
             }
 
             return icons;
+        }
+
+        public static string ToPascalCase(string fileName)
+        {
+            string[] parts = fileName.Split('-', '_', ' ');
+
+            return string.Concat(parts.Select(part => CultureInfo.InvariantCulture.TextInfo.ToTitleCase(part.ToLower())));
+        }
+
+        public static string Simplify(string geometryData, int decimals = 3)
+        {
+            return Regex.Replace(geometryData, @"-?\d+(\.\d+)?", match => 
+            { 
+                double value = double.Parse(match.Value, CultureInfo.InvariantCulture);
+                return Math.Round(value, decimals).ToString(CultureInfo.InvariantCulture);
+            });
         }
     }
 }
