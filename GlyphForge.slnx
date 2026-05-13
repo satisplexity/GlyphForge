@@ -1,1 +1,3 @@
-<Solution />
+<Solution>
+  <Project Path="GlyphForge.Presentation/GlyphForge.Presentation.csproj" />
+</Solution>
