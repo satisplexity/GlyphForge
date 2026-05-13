@@ -206,8 +206,12 @@
                        Grid.Row="1"
                        Grid.ColumnSpan="2"/>
 
-            <WrapPanel Grid.Row="2"
-                       Grid.ColumnSpan="2"/>
+            <ScrollViewer Grid.Row="2"
+                          Grid.ColumnSpan="2">
+
+                <WrapPanel xaml:Name="_iconsPanel"/>
+
+            </ScrollViewer>
 
             <TextBlock Text="Debug info"
                        Style="{StaticResource SubTitle}"
